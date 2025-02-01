@@ -26,7 +26,7 @@ NewPing mySensor(ULTRASONIC_SENSOR_TRIG, ULTRASONIC_SENSOR_ECHO, 400);
 
 void setup()
 {
-  // put your setup code here, to run once:
+  
   pinMode(enableRightMotor, OUTPUT);
   pinMode(rightMotorPin1, OUTPUT);
   pinMode(rightMotorPin2, OUTPUT);
@@ -46,10 +46,6 @@ void loop()
   int distance = mySensor.ping_cm();
   int rightIRSensorValue = digitalRead(IR_SENSOR_RIGHT);
   int leftIRSensorValue = digitalRead(IR_SENSOR_LEFT);
-
-  //NOTE: If IR sensor detects the hand then its value will be LOW else the value will be HIGH
-  
-  //If right sensor detects hand, then turn right. We increase left motor speed and decrease the right motor speed to turn towards right
   if (rightIRSensorValue == LOW && leftIRSensorValue == HIGH )
   {
       rotateMotor(MAX_FORWARD_MOTOR_SPEED - MAX_MOTOR_TURN_SPEED_ADJUSTMENT, MAX_FORWARD_MOTOR_SPEED + MAX_MOTOR_TURN_SPEED_ADJUSTMENT ); 
